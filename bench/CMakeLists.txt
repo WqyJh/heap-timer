@@ -6,7 +6,10 @@
 # apt install libbenchmark-dev
 find_package(benchmark REQUIRED)
 
-set(CMAKE_BUILD_TYPE "Debug")
+if (NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "Release")
+endif()
+message(STATUS "bench CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
 
 add_executable(heap_timer_bench
     heap_timer_bench.cc)
